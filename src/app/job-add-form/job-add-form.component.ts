@@ -37,7 +37,7 @@ export class JobAddFormComponent implements OnInit {
   ];
 
   areas = [
-    {id: 1, name: 'aucun déplacement', value: 'none'},
+    {id: 1, name: 'Aucun déplacement', value: 'none'},
     {id: 2, name: 'Déplacement régionaux', value: 'region'},
     {id: 3, name: 'Déplacement nationaux', value: 'nation'},
     {id: 4, name: 'Déplacement internationaux', value: 'international'}
@@ -55,7 +55,7 @@ export class JobAddFormComponent implements OnInit {
         description: '',
         contract: '',
         salary: null,
-        currency: '',
+        currency: ' ',
         startdate: new Date(),
         experience: '',
         status: '',

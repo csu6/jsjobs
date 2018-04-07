@@ -72,14 +72,16 @@
       </div>
 
       <div class="form-group col-sm-12">
-        <label for="area">Déplacement</label>
-        <input type="radio"
-          [id]="area.value"
-          name="area"
-          [value]="area.value"
-          formControlName="area"
-        />
-        <label [for]="btn"></label>
+        <label for="area">Déplacements</label>
+        <div *ngFor="let area of areas">
+          <input type="radio" 
+            [id]='"btn-" + area.value' 
+            name="area" 
+            [value]="area.value" 
+            formControlName="area" 
+          />
+          <label [for]='"btn-" + area.value'>{{area.name}}</label>
+        </div>
       </div>
 
       <div class="form-group col-sm-12">
