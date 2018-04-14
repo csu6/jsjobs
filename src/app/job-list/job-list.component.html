@@ -1,3 +1,15 @@
-<div *ngFor="let job of jobs">
-  {{ job.title }}
+<div class="card" *ngFor="let job of jobs">
+  <div class="card-heading bg-warning">
+    <h3 class="card-title">
+      {{job.title}}
+    </h3>
+    <div>{{job.company}} - {{job.city}} - {{job.zipcode}}</div>
+  </div>
+  <div class="card-body">
+    {{job.description}}
+  </div>
+  <div class="card-footer bg-warning clear">
+    parue il y a {{job.publishdate | daysAgo}}
+  </div>    
 </div>
+

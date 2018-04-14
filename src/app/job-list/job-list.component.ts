@@ -33,6 +33,12 @@ export class JobListComponent implements OnInit {
         this.error = error;
       }
     );
+
+    this.jobservice.jobsSubject.subscribe(data => {
+      console.log("subscribe : ");
+      console.log(data);
+      this.jobs = [data,...this.jobs];
+    });
   }
 
 }
