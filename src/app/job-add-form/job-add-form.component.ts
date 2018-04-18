@@ -69,9 +69,7 @@ export class JobAddFormComponent implements OnInit {
   }
 
   createJob(jobData) {
-    console.log(this.form.value);
-    console.log(jobData);
-    this.jobService.addJob(jobData);
+    this.jobService.addJob(jobData).subscribe();
   }
 
 }

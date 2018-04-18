@@ -1,7 +1,9 @@
-<div class="card" *ngFor="let job of jobs">
-  <div class="card-heading bg-warning">
-    <h3 class="card-title">
+<div class="card border-secondary mb-3" *ngFor="let job of jobs">
+  <div class="card-header">
       {{job.title}}
+  </div>
+  <div class="card-body text-secondary">
+    <h3 class="card-title">      
     </h3>
     <div>{{job.company}} - {{job.city}} - {{job.zipcode}}</div>
   </div>
