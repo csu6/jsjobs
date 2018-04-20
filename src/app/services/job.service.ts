@@ -38,7 +38,7 @@ export class JobService {
                       .do(data => this.initialJobs = data);
     }
     */
-    return this.http.get<any[]>(this.BASE_URL + 'api/jobs')
+    return this.http.get<any[]>(this.BASE_URL + 'api/jobs');
   }
 
   addJob(jobData) {
@@ -46,13 +46,21 @@ export class JobService {
     jobData.id = Date.now();
     //this.jobs = [jobData, ...this.jobs];
     //return this.jobsSubject.next(jobData); 
-
     return this.http.post(this.BASE_URL + 'api/jobs', jobData)
                     .map(res => {
-                      console.log("REST : ");
-                      console.log(res);
                       this.jobsSubject.next(jobData);
                     });
+  }
+
+  getJob(id) {
+    return this.http.get( this.BASE_URL + `api/jobs/${id}`);
+                    //.map(res => res.json());
+  }
+
+  searchJob(criteria) {
+    console.log(criteria);
+    return this.http.get(`${this.BASE_URL}api/search/${criteria.term}/${criteria.place}`);
+
   }
 
 }
