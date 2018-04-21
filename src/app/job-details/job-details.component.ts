@@ -19,6 +19,7 @@ export class JobDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params.id;
+	
     this.jobService.getJob(id)
                     .subscribe(
                       data => {
