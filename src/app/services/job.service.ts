@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operator/map';
+import 'rxjs/operators/map';
 import { Subject } from 'rxjs/Rx';
 import 'rxjs/add/operator/do';
 import { Observable } from 'rxjs/Observable';
@@ -11,6 +11,7 @@ export class JobService {
   initialJobs = [];
   jobs = [];
   jobsSubject = new Subject();
+  searchResultSubject = new Subject();
 
   BASE_URL = 'http://localhost:4201/';
 
@@ -59,8 +60,10 @@ export class JobService {
 
   searchJob(criteria) {
     console.log(criteria);
-    return this.http.get(`${this.BASE_URL}api/search/${criteria.term}/${criteria.place}`);
-
+    return this.http.get<any[]>(`${this.BASE_URL}api/search/${criteria.term}/${criteria.place}`)
+                    .do(res => {
+                      this.searchResultSubject.next(res);
+                    });
   }
 
 }

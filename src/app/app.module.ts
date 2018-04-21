@@ -19,6 +19,7 @@ import { JobDetailsComponent } from './job-details/job-details.component';
 import { AboutComponent } from './about/about.component';
 import { ToShortDatePipe } from './pipes/to-short-date.pipe';
 import { ToMoneySymbolPipe } from './pipes/to-money-symbol.pipe';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 const routes = [
   { path: '', component: HomeComponent},
@@ -40,7 +41,8 @@ const routes = [
     JobDetailsComponent,
     AboutComponent,
     ToShortDatePipe,
-    ToMoneySymbolPipe
+    ToMoneySymbolPipe,
+    SearchResultComponent
   ],
   imports: [
     BrowserModule,
