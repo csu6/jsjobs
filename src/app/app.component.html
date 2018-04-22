@@ -15,10 +15,13 @@
             <a class="nav-link" href="#" routerLink="/about">A propos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/login">Se connecter</a>
+            <a class="nav-link" href="#" routerLink="/register">S'enregistrer</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/register">S'enregistrer</a>
+            <a class="nav-link" href="#" routerLink="/login" *ngIf="!authService.userIsLoggedIn()">Se connecter</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="authService.logOut()" *ngIf="authService.userIsLoggedIn()">Se déconnecter</a>
         </li>
       </ul>
     </div>
