@@ -8,6 +8,15 @@
               placeholder="email"
               required
       />
+      <br />
+      <input type="text"
+              class="form-control register-input"
+              ngModel
+              name="nickname" 
+              placeholder="Pseudo"
+              required
+      />
+      <br />
       <input type="password"
               class="form-control register-input"
               ngModel
@@ -15,6 +24,7 @@
               placeholder="mot de passe"
               required
       />
+      <br />
       <input type="password"
               class="form-control register-input"
               ngModel
@@ -22,6 +32,7 @@
               placeholder="Confirmer le mot de passe"
               required
       />
+      <br />
       <button type="submit" class="btn btn-success" [disabled]="registerForm.invalid">Se connecter</button>
     </form>
   </div>

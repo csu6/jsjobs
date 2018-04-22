@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import * as jwtDecode from 'jwt-decode';
 
 @Injectable()
 export class AuthService {
@@ -24,6 +25,9 @@ export class AuthService {
   register(credentials) {
     //console.log("register: ", credentials);
     return this.http.post(`${this.BASE_URL}/register`, credentials);
+  }
 
+  decodeToken(token) {
+    return jwtDecode(token);
   }
 }
