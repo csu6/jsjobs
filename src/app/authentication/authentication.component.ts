@@ -10,11 +10,19 @@ export class AuthenticationComponent implements OnInit {
 
   jbbData = null;
   isAuthenticated = false;
-  welcomeMEssage = '';
+  welcomeMessage = '';
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    if(localStorage.getItem('jbb-data')) {
+      this.refreshFlags();
+    }
+  }
+
+  refreshFlags() {
+    this.isAuthenticated = true;
+    this.welcomeMessage = 'Bienvenue';
   }
 
   login(formData) {
@@ -28,8 +36,7 @@ export class AuthenticationComponent implements OnInit {
   }
   handleLoginSuccess(data) {
     this.jbbData = data;
-    this.isAuthenticated = true;
-    this.welcomeMEssage = 'Bienvenue';
+    this.refreshFlags();
     localStorage.setItem('jbb-data', JSON.stringify(this.jbbData));
   }
 
