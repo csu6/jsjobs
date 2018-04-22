@@ -15,7 +15,7 @@ export class AuthenticationComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    if(localStorage.getItem('jbb-data')) {
+    if(this.authService.userIsLoggedIn()) {
       this.refreshFlags();
     }
   }
@@ -26,7 +26,6 @@ export class AuthenticationComponent implements OnInit {
   }
 
   login(formData) {
-    console.log(formData);
     this.authService.login(formData)
                     .subscribe(
                       data => this.handleLoginSuccess(data),
@@ -34,6 +33,7 @@ export class AuthenticationComponent implements OnInit {
                     );
 
   }
+
   handleLoginSuccess(data) {
     this.jbbData = data;
     this.refreshFlags();
