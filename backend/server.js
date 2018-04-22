@@ -6,8 +6,8 @@ let data = require('./jobs');
 let initialJobs = data.jobs;
 let addedJobs = [];
 
-users = [];
-const fakeUser = {id: 1, email: 'sm@test.fr', nickname: 'James', password: 'aze'};
+users = [{id: 1, email: 'sm@test.fr', nickname: 'James', password: 'aze'}];
+//const fakeUser = {id: 1, email: 'sm@test.fr', nickname: 'James', password: 'aze'};
 const secret = 'DRk43tgBQwjTzhZB6VagLY4oTEjJ33CJmIJ7B8osecAbuoy7twuiBnQ';
 const jwt = require('jsonwebtoken');
 
@@ -27,21 +27,20 @@ const api = express.Router();
 const auth = express.Router();
 
 auth.post('/login', (req, res) => {
-    console.log('req.body : ', req.body);
     if(req.body) {
         const email = req.body.email.toLocaleLowerCase();
         const password = req.body.password.toLocaleLowerCase();
-        if(email === fakeUser.email && password === fakeUser.password) {
-            delete req.body.password;
+        const index = users.findIndex(user => user.email === email);
+        if(index > -1 && users[index].password === password) {
+            //delete req.body.password;
             const token = jwt.sign({iss: 'http://localhost:4201', role: 'admin', email: req.body.email}, secret);
-
            // res.json({success: true, data: req.body});
             res.json({success: true, token});
         } else {
-            res.json({success: false, message: 'Identifiants incorrects'});
+            res.status(401).json({success: false, message: 'Identifiants incorrects'});
         }
     } else {
-        res.json({success: false, message: 'Données manquantes'});
+        res.status(500).json({success: false, message: 'Données manquantes'});
     }
 });
 
