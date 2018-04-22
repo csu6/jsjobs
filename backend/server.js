@@ -6,7 +6,8 @@ let data = require('./jobs');
 let initialJobs = data.jobs;
 let addedJobs = [];
 
-const fakeUser = {email: 'sm@test.fr', password: 'aze'};
+users = [];
+const fakeUser = {id: 1, email: 'sm@test.fr', password: 'aze'};
 const secret = 'DRk43tgBQwjTzhZB6VagLY4oTEjJ33CJmIJ7B8osecAbuoy7twuiBnQ';
 const jwt = require('jsonwebtoken');
 
@@ -44,6 +45,18 @@ auth.post('/login', (req, res) => {
     }
 });
 
+auth.post('/register', (req, res) => {
+    console.log('req.body : ', req.body);
+    if(req.body) {
+        const email  = req.body.email.toLocaleLowerCase().trim();
+        const password = req.body.password.toLocaleLowerCase().trim();
+        users = [{id: Date.now(), email: email, password: password}, ...users];
+        res.json({success: true, users: users});
+    } else {
+        res.json({success: false, message: 'La création  a échoué'});
+    }
+})
+
 api.get('/jobs', (req, res) => {
     //res.json(data.jobs)
     res.json(getAllJobs());
@@ -64,8 +77,8 @@ api.get('/search/:term/:place?', (req, res) => {
         place = place.toLowerCase().trim();
         jobs = jobs.filter(j => (j.city.toLowerCase().includes(place)));
     }
-    //res.json({sucess: true, jobs: jobs});
-    res.json({sucess: true, jobs}); // same name
+    //res.json({success: true, jobs: jobs});
+    res.json({success: true, jobs}); // same name
 });
 
 api.get('/jobs/:id', (req, res) => {
