@@ -6,7 +6,10 @@ let data = require('./jobs');
 let initialJobs = data.jobs;
 let addedJobs = [];
 
-users = [{id: 1, email: 'sm@test.fr', nickname: 'James', password: 'aze'}];
+users = [
+    {id: 1, email: 'admin@test.fr', nickname: 'James', password: 'aze', role: 'admin'},
+    {id: 2, email: 'user@test.fr', nickname: 'User', password: 'aaa', role: 'user'}
+];
 //const fakeUser = {id: 1, email: 'sm@test.fr', nickname: 'James', password: 'aze'};
 const secret = 'DRk43tgBQwjTzhZB6VagLY4oTEjJ33CJmIJ7B8osecAbuoy7twuiBnQ';
 const jwt = require('jsonwebtoken');
@@ -33,7 +36,13 @@ auth.post('/login', (req, res) => {
         const index = users.findIndex(user => user.email === email);
         if(index > -1 && users[index].password === password) {
             //delete req.body.password;
-            const token = jwt.sign({iss: 'http://localhost:4201', role: 'admin', email: req.body.email}, secret);
+            let user = users[index];
+            let token  = '';
+            if(user.email === 'admin@test.fr') {
+                token = jwt.sign({iss: 'http://localhost:4201', role: 'admin', email: req.body.email}, secret);
+            } else {
+                token = jwt.sign({iss: 'http://localhost:4201', role: 'user', email: req.body.email}, secret);
+            }
            // res.json({success: true, data: req.body});
             res.json({success: true, token});
         } else {
