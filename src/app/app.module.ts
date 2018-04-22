@@ -10,6 +10,7 @@ import { JobListComponent } from './job-list/job-list.component';
 
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { JobService } from './services/job.service';
+import { AuthService } from './services/auth.service';
 import { JobAddFormComponent } from './job-add-form/job-add-form.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -55,7 +56,7 @@ const routes = [
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [JobService],
+  providers: [JobService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

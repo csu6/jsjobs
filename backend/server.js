@@ -6,6 +6,10 @@ let data = require('./jobs');
 let initialJobs = data.jobs;
 let addedJobs = [];
 
+const fakeUser = {email: 'sm@test.fr', password: 'aze'};
+const secret = 'DRk43tgBQwjTzhZB6VagLY4oTEjJ33CJmIJ7B8osecAbuoy7twuiBnQ';
+const jwt = require('jsonwebtoken');
+
 const getAllJobs = () => {
     return  [...addedJobs, ...initialJobs];
 };
@@ -19,6 +23,26 @@ app.use((req, res, next) => {
 });
 
 const api = express.Router();
+const auth = express.Router();
+
+auth.post('/login', (req, res) => {
+    console.log('req.body : ', req.body);
+    if(req.body) {
+        const email = req.body.email.toLocaleLowerCase();
+        const password = req.body.password.toLocaleLowerCase();
+        if(email === fakeUser.email && password === fakeUser.password) {
+            delete req.body.password;
+            const token = jwt.sign({iss: 'http://localhost:4201', role: 'admin'}, secret);
+
+           // res.json({success: true, data: req.body});
+            res.json({success: true, token});
+        } else {
+            res.json({success: false, message: 'Identifiants incorrects'});
+        }
+    } else {
+        res.json({success: false, message: 'Données manquantes'});
+    }
+});
 
 api.get('/jobs', (req, res) => {
     //res.json(data.jobs)
@@ -57,6 +81,9 @@ api.get('/jobs/:id', (req, res) => {
 });
 
 app.use('/api', api); // localhost:4201/api/jobs
+app.use('/auth', auth); // localhost:4201/auth/login
+
+
 
 const port = 4201;
 
