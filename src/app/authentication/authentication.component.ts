@@ -8,6 +8,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class AuthenticationComponent implements OnInit {
 
+  jbbData = null;
+  isAuthenticated = false;
+  welcomeMEssage = '';
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -23,7 +27,10 @@ export class AuthenticationComponent implements OnInit {
 
   }
   handleLoginSuccess(data) {
-    console.log('success: ' + data);
+    this.jbbData = data;
+    this.isAuthenticated = true;
+    this.welcomeMEssage = 'Bienvenue';
+    localStorage.setItem('jbb-data', JSON.stringify(this.jbbData));
   }
 
   handleLoginFailure(error) {

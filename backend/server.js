@@ -32,7 +32,7 @@ auth.post('/login', (req, res) => {
         const password = req.body.password.toLocaleLowerCase();
         if(email === fakeUser.email && password === fakeUser.password) {
             delete req.body.password;
-            const token = jwt.sign({iss: 'http://localhost:4201', role: 'admin'}, secret);
+            const token = jwt.sign({iss: 'http://localhost:4201', role: 'admin', email: req.body.email}, secret);
 
            // res.json({success: true, data: req.body});
             res.json({success: true, token});
