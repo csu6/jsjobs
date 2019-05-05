@@ -1,5 +1,5 @@
 <div class="panel-body">
-  <form [formGroup]="form" (ngSubmit)="createJob()" >
+  <form [formGroup]="form" (ngSubmit)="createJob(form.value)" >
     <div class="row">
       <div class="form-group col-sm-6">
         <label for="title">Titre</label>
@@ -82,6 +82,11 @@
           />
           <label [for]='"btn-" + area.value'>{{area.name}}</label>
         </div>
+      </div>
+      
+      <div class="form-group col-sm-12">
+        <label for="startdate">Date de démarrage</label>
+        <input type="date" name="startdate" fromControlName="startdate" />
       </div>
 
       <div class="form-group col-sm-12">
