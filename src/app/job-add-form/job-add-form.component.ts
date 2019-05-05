@@ -21,9 +21,9 @@ export class JobAddFormComponent implements OnInit {
 
   currencies = [
     {id: 1, name: 'euros', value: 'EUR', symbol: '€'},
-    {id: 2, name: 'livres sterling', value: 'POUNS', symbol: '£'},
+    {id: 2, name: 'livres sterling', value: 'POUNDS', symbol: '£'},
     {id: 3, name: 'francs', value: 'CFA', symbol: 'CFA'},
-    {id: 4, name: 'dollars canadien', value: 'EUR', symbol: '$'}
+    {id: 4, name: 'dollars canadien', value: 'CAD', symbol: '$'}
   ];
 
   statuses = [

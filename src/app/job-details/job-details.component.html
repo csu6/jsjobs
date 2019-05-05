@@ -8,7 +8,7 @@
         <hr />
         publié le {{jobDetails.publishdate | toShortDate}} <br />
         actualisé le {{jobDetails.lastupdate | toShortDate}} <br />
-        salaire : {{jobDetails.salary}} {{jobDetails.currency}}
+        salaire : {{jobDetails.salary}} {{jobDetails.currency | toMoneySymbol}} 
         <hr />
         <b>Description du poste</b>
         <div>
