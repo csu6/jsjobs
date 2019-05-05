@@ -1,7 +1,34 @@
 <div *ngIf="jobDetails">
-  <pre>{{jobDetails | json}}</pre>
+  <div class="panel panel-default">
+    <div class="panel-heading"><h3>{{jobDetails.title}}</h3></div>
+    <div class="panel-body">
+        {{jobDetails.company}} <br />
+        {{jobDetails.city}} - {{jobDetails.zipcode}} <br />
+        {{jobDetails.contract}}
+        <hr />
+        publié le {{jobDetails.publishdate | toShortDate}} <br />
+        actualisé le {{jobDetails.lastupdate | toShortDate}} <br />
+        salaire : {{jobDetails.salary}} {{jobDetails.currency}}
+        <hr />
+        <b>Description du poste</b>
+        <div>
+           {{jobDetails.description}}
+        </div>
+        <hr />
+        <div>
+          date de démarrage : {{jobDetails.startdate | toShortDate}} <br />
+          statut : {{jobDetails.status}} <br />
+          déplacement : {{jobDetails.area}}
+
+        </div>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="errorMessage">
   Sorry: {{errorMessage}}
+</div>
+
+<div *ngIf="error">
+  <pre>{{error | json}}</pre>
 </div>

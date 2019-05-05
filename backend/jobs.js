@@ -14,8 +14,8 @@ exports.jobs = [
       "status": "cadre",
       "area": "pas de déplacement",
       "field": "aéronautique",
-      "publishdate": "02/17/2017",
-      "lastupdate": "05/01/2017"
+      "publishdate": "2017-02-05",
+      "lastupdate": "2017-02-05"
     },
     {
       "id": 2,
@@ -32,8 +32,8 @@ exports.jobs = [
       "status": "employé",
       "area": "national",
       "field": "édition",
-      "publishdate": "06/04/2017",
-      "lastupdate": "06/04/2017"
+      "publishdate": "2017-02-05",
+      "lastupdate": "2017-02-05"
     },
     {
       "id": 3,
@@ -50,8 +50,8 @@ exports.jobs = [
       "status": "stagiaire",
       "area": "europe",
       "field": "secteur d'avenir",
-      "publishdate": "05/07/2017",
-      "lastupdate": "06/04/2017"
+      "publishdate": "2017-02-05",
+      "lastupdate": "2017-02-05"
     },
     {
       "id": 4,
@@ -63,12 +63,12 @@ exports.jobs = [
       "contract": "CDI",
       "salary": 0,
       "currency": "euros",
-      "startdate": "09/01/2017",
+      "startdate": "2017-02-05",
       "experience": "senior",
       "status": "cadre",
       "area": "Ouest",
       "field": "le monde du livre",
-      "publishdate": "06/02/2017",
-      "lastupdate": "06/02/2017"
+      "publishdate": "2017-02-05",
+      "lastupdate": "2017-02-05"
     }
   ]
