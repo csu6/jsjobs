@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -44,6 +45,7 @@ const routes = [
     BrowserModule,
     HttpClientModule, HttpClientJsonpModule,
     ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [JobService],
