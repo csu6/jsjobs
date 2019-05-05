@@ -1,3 +1,7 @@
 <div *ngIf="jobDetails">
   <pre>{{jobDetails | json}}</pre>
 </div>
+
+<div *ngIf="errorMessage">
+  Sorry: {{errorMessage}}
+</div>
